@@ -1,0 +1,47 @@
+[project]
+name = "octottl"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "jpenalozaa", email = "jesus.penalozaa@ufl.edu" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.10.1",
+    "numpy>=2.2.5",
+    "pendulum>=3.1.0",
+    "polars>=1.27.1",
+    "pyarrow>=19.0.1",
+    "python-dotenv>=1.1.0",
+]
+
+
+[project.optional-dependencies]
+# Development tools
+dev = [
+    "ipykernel>=6.29.5",
+    "pretty-errors>=1.2.25",
+    "python-dotenv>=1.1.0",
+    "ruff>=0.9.5",
+]
+
+docs = [
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.6.12",
+    "mkdocstrings[python]>=0.24.0",
+    "mkdocs-autorefs>=0.5.0",
+]
+
+[project.scripts]
+octottl = "octottl:main"
+
+[tool.maturin]
+module-name = "octottl._rs"
+python-packages = ["octottl"]
+python-source = "src"
+manifest-path = "./rust/Cargo.toml"
+
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
